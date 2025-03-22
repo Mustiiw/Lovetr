@@ -27,9 +27,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 50px; /* Butonlar arasında daha fazla boşluk */
+            gap: 50px; /* Butonlar arasında boşluk */
             position: relative;
-            height: 80px; /* Daha geniş alan */
+            height: 80px;
         }
         .btn {
             padding: 10px 20px;
@@ -40,7 +40,7 @@
             transition: all 0.3s ease;
             width: 100px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position: relative; /* No butonu için absolute kaldırıldı */
+            position: relative;
         }
         .yes-btn {
             background-color: #4CAF50;
@@ -75,7 +75,7 @@
     <h1>Dateye çıkalım mı? 🥰😍💋🩷🩷🩷</h1>
     <div class="button-container">
         <button class="btn yes-btn" onclick="showThanks()">Evet</button>
-        <button class="btn no-btn" id="noBtn" onmouseover="moveNo()" onclick="moveNo()">Hayır</button>
+        <button class="btn no-btn" id="noBtn" onclick="moveNo()">Hayır</button>
     </div>
 
     <script>
@@ -86,7 +86,7 @@
             const maxY = window.innerHeight - noBtn.offsetHeight;
             const x = Math.random() * maxX;
             const y = Math.random() * maxY;
-            noBtn.style.position = 'absolute'; /* Hareket için absolute */
+            noBtn.style.position = 'absolute';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
         }
