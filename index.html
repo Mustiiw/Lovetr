@@ -6,112 +6,67 @@
     <title>Sevgilim İçin 🩷</title>
     <style>
         body {
-            background-color: #fff0f5;
+            background-color: white;
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            overflow: hidden;
+            padding: 50px 0; /* Üstte ve altta boşluk */
         }
         h1 {
-            font-size: 24px;
-            color: #333;
-            margin: 0 0 40px 0;
-            animation: fadeIn 1s ease-in;
+            font-size: 18px; /* Yazı daha küçük */
+            color: black;
+            margin: 0 0 30px 0; /* Altında simetrik boşluk */
         }
         .button-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 50px; /* Butonlar arasında boşluk */
+            gap: 20px; /* Butonlar arası simetrik boşluk */
             position: relative;
-            height: 80px;
-        }
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position: relative;
+            height: 50px; /* Daha az yer kaplasın */
         }
         .yes-btn {
-            background-color: #4CAF50;
+            background-color: green;
             color: white;
-        }
-        .yes-btn:hover {
-            background-color: #45a049;
-            transform: scale(1.1);
+            padding: 5px 10px; /* Buton daha küçük */
+            border: none;
+            font-size: 12px; /* Yazı daha küçük */
+            cursor: pointer;
         }
         .no-btn {
-            background-color: #ff4444;
+            background-color: red;
             color: white;
-        }
-        .no-btn:hover {
-            background-color: #cc0000;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
-        }
-        .thanks {
-            animation: bounce 1s infinite;
+            padding: 5px 10px; /* Buton daha küçük */
+            border: none;
+            font-size: 12px; /* Yazı daha küçük */
+            position: absolute;
+            transition: all 0.15s ease; /* Hızlı ve akıcı hareket */
         }
     </style>
 </head>
 <body>
     <h1>Dateye çıkalım mı? 🥰😍💋🩷🩷🩷</h1>
     <div class="button-container">
-        <button class="btn yes-btn" onclick="showThanks()">Evet</button>
-        <button class="btn no-btn" id="noBtn" onclick="moveNo()">Hayır</button>
+        <button class="yes-btn" onclick="showThanks()">Evet</button>
+        <button class="no-btn" id="noBtn" onmouseover="moveNo()" onclick="moveNo()">Hayır</button>
     </div>
 
     <script>
         const noBtn = document.getElementById('noBtn');
+        noBtn.style.left = '20px'; // Başlangıç pozisyonu
 
         function moveNo() {
-            const maxX = window.innerWidth - noBtn.offsetWidth;
-            const maxY = window.innerHeight - noBtn.offsetHeight;
+            const container = document.querySelector('.button-container');
+            const maxX = container.offsetWidth - noBtn.offsetWidth;
+            const maxY = container.offsetHeight - noBtn.offsetHeight;
             const x = Math.random() * maxX;
             const y = Math.random() * maxY;
-            noBtn.style.position = 'absolute';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
         }
 
         function showThanks() {
-            document.body.innerHTML = `
-                <h1 class="thanks" style="font-size: 24px; color: #ff69b4;">
-                    Teşekkürleeeerrrr güzelimm 🥰🥰💕
-                </h1>
-            `;
-            for (let i = 0; i < 10; i++) {
-                createHeart();
-            }
-        }
-
-        function createHeart() {
-            const heart = document.createElement('span');
-            heart.innerHTML = '🩷';
-            heart.style.position = 'absolute';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = Math.random() * 100 + 'vh';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-            heart.style.animation = 'fadeIn 2s ease forwards';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 2000);
+            document.body.innerHTML = '<h1 style="font-size: 18px; margin: 50px 0;">Teşekkürleeeerrrr güzelimm 🥰🥰</h1>';
         }
     </script>
 </body>
